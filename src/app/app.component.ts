@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
     this.listen();
   }
 
-  requestPermissions(): void {
+  requestPermissions() {
     const messaging = getMessaging();
 
     getToken(messaging, { vapidKey: environment.firebase.vapidKey }).then(currentToket => {
@@ -35,8 +35,9 @@ export class AppComponent implements OnInit {
 
   }
 
-  listen(): void {
+  listen() {
     const messaging = getMessaging();
+    
     onMessage(messaging, payload => {
       console.log('Message received. ', payload);
       this.message = payload;
